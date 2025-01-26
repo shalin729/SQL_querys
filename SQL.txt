@@ -18,3 +18,18 @@ INSERT INTO ORDERS VALUES(3001,18.69,'10/03/99',2006,1007),
 1   select onum,amount,odate from [order]
 
 2   select * from customer where snum=1001
+
+3   select city,sname,snum,commission from salesman
+
+4   select distinct snum from orders
+
+5   select * from [order] where amount>=1000
+
+6   select city,sname from salesman where city='london' and COMMISSION>10
+
+7   select * from customer where city!='rome' and RATING>100
+
+8   select * from orders where amount>=1000 and not(snum = 1007 or odate='10/03/99')
+
+9   select * from orders where  odate='10/03/99' or odate='10/04/99' or odate='10/06/99'
+
