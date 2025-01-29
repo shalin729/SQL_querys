@@ -101,7 +101,7 @@ INSERT INTO ORDERS VALUES(3001,18.69,'10/03/99',2006,1007),
 
 42  INSERT INTO lONDONSTAFF(SNUM,SNAME,CITY,COMMISSION) SELECT * FROM Salesman WHERE CITY = 'LONDON'
 
-43
+43  SELECT odate AS "date", amount AS "total" INTO daytotal FROM Orders;
 
 44  DELETE FROM ORDERS WHERE CNUM = (SELECT CNUM FROM CUSTOMER WHERE CNAME='CHANDU') 
 
@@ -130,6 +130,7 @@ INSERT INTO ORDERS VALUES(3001,18.69,'10/03/99',2006,1007),
 
 54  create view S_O_count as select o.snum, s.sname,  avg(amount)"average" ,count(onum)"total order" from orders o join Salesman s on o.snum=s.snum group by s.sname,o.snum
 
+55  create view Order_name as select o.onum,o.amount,s.sname,c.cname from orders o join salesman s on o.snum=s.snum join CUSTOMER c on o.cnum=c.cnum
 
 
 
