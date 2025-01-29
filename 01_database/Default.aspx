@@ -76,6 +76,8 @@
         <br />
         <br />
         <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="LogIn" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="Button8" runat="server" OnClick="Button8_Click" Text="Reset password" />
         <br />
     </form>
     <p>

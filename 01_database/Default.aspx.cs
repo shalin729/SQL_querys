@@ -41,11 +41,9 @@ public partial class _Default : System.Web.UI.Page
         da.Fill(ds);
         if (TextBox2.Text == ds.Tables[0].Rows[0]["Email"].ToString())
         {
-
-
             Response.Write("Your account on this email is already Exist");
         }
-        else
+        else if (ds.Tables[0].Rows.Count < 1)
         {
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -169,5 +167,10 @@ public partial class _Default : System.Web.UI.Page
         {
             Response.Write("Ragester now");
         }
+    }
+
+    protected void Button8_Click(object sender, EventArgs e)
+    {
+
     }
 }
