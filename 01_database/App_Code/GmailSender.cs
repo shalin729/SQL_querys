@@ -22,7 +22,7 @@ public class GmailSender
         {
             NetworkCredential loginInfo = new NetworkCredential(gMailAccount, password);
             MailMessage msg = new MailMessage();
-            msg.From = new MailAddress(gMailAccount,"HAPPY FEST SHOPPING");
+            msg.From = new MailAddress(gMailAccount,"OTP");
             msg.To.Add(new MailAddress(to));
             msg.Subject = subject;
             msg.Body = message;
@@ -48,7 +48,7 @@ public class GmailSender
         {
             NetworkCredential loginInfo = new NetworkCredential(gMailAccount, password);
             MailMessage msg = new MailMessage();
-            msg.From = new MailAddress(gMailAccount,"Apex Shopping System");
+            msg.From = new MailAddress(gMailAccount,"Database system");
             msg.To.Add(new MailAddress(to));
             msg.Subject = subject;
             msg.Body = message;

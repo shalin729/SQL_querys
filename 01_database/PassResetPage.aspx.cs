@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 
 public partial class PassResetPage : System.Web.UI.Page
 {
+
     SqlConnection conn;
     SqlCommand cmd;
     SqlDataAdapter da;
@@ -21,7 +22,7 @@ public partial class PassResetPage : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //Session.Clear();
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -46,9 +47,10 @@ public partial class PassResetPage : System.Web.UI.Page
             Random r = new Random();
             string otp = r.Next(1000, 9999).ToString();
 
+            Session["otp"] = otp;
             string message = "You otp for reset password <br>Your OTP=" + otp;
 
-            if (GmailSender.SendMail("xipratestmail@gmail.com", "murp ipqn zohd harr", TextBox1.Text, "Your OTP", message))
+            if (GmailSender.SendMail("wampcoding@gmail.com", "pggy dgyq whmo tdur", TextBox1.Text, "Your OTP", message))
             {
                 Response.Write("Password Reset otp has been successfully sent on your email account");
                 TextBox2.Enabled = true;
@@ -60,7 +62,7 @@ public partial class PassResetPage : System.Web.UI.Page
 
                 Response.Write("pls chk you internet connection message sending fail");
             }
-            
+                  
         }
         else
         {
@@ -74,9 +76,12 @@ public partial class PassResetPage : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        if(TextBox2.Text == TextBox4.Text)
+
+        string otp = Session["otp"] as string;
+        if (TextBox2.Text == otp)
         {
             MyConn();
+
             cmd = new SqlCommand("update  Sqlpractice set Password=@Password where Email=@Email", conn);
             cmd.Parameters.AddWithValue("@Email", TextBox1.Text);
             cmd.Parameters.AddWithValue("@Password", TextBox3.Text);
@@ -85,6 +90,12 @@ public partial class PassResetPage : System.Web.UI.Page
             //conn.Close();
 
             Response.Write("Data Successfully Updated");
+            Response.Redirect("page2.aspx");
+            Session.Remove("otp");
+        }
+        else
+        {
+            Response.Write("Somthing went wrong or otp is wrong");
         }
     }
 }

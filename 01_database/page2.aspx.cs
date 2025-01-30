@@ -20,4 +20,14 @@ public partial class page2 : System.Web.UI.Page
     {
         Response.Redirect("Default.aspx");
     }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("PassChangePage.aspx");
+    }
+
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EditPage.aspx");
+    }
 }

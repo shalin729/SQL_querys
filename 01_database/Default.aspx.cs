@@ -104,7 +104,7 @@ public partial class _Default : System.Web.UI.Page
         if (ds.Tables[0].Rows.Count > 0)
         {
 
-
+            Session["email"]= ds.Tables[0].Rows[0]["Email"].ToString();
             TextBox1.Text = ds.Tables[0].Rows[0]["Name"].ToString();
             TextBox2.Text = ds.Tables[0].Rows[0]["Email"].ToString();
             TextBox3.Text = ds.Tables[0].Rows[0]["Password"].ToString();
@@ -149,18 +149,10 @@ public partial class _Default : System.Web.UI.Page
         {
             Response.Write("Log In Successfully");
 
-            HttpCookie c1 = new HttpCookie("login");
-            c1.Values.Add("v1", ds.Tables[0].Rows[0]["Name"].ToString());
-            //c1.Values.Add("v2", ds.Tables[0].Rows[0]["Email"].ToString());
-            //c1.Values.Add("v3", ds.Tables[0].Rows[0][""].ToString());
-            //c1.Values.Add("v4", ds.Tables[0].Rows[0]["Email"].ToString());
-
-
-
-            c1.Expires = System.DateTime.Now.AddDays(2);
-            Response.Cookies.Add(c1);
-
-            Response.Write("cookie created...");
+            Session["name"] = ds.Tables[0].Rows[0]["Name"].ToString();
+            Session["email"] = ds.Tables[0].Rows[0]["Email"].ToString();
+            Session["password"] = ds.Tables[0].Rows[0]["Password"].ToString();
+            Session["phno"] = ds.Tables[0].Rows[0]["PhNo"].ToString();
             Response.Redirect("page2.aspx");
         }
         else
@@ -171,6 +163,6 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Button8_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("PassResetPage.aspx");
     }
 }
