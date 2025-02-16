@@ -6,8 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Data;
 using System.Reflection.Emit;
 
 public partial class Default2 : System.Web.UI.Page
@@ -24,7 +22,11 @@ public partial class Default2 : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        TextBox1.Text = Request.Cookies["login"].Values["v2"].ToString();
+        if (Session["email"] != null)
+        {
+
+        TextBox1.Text = Session["email"].ToString();
+        }
     }
 
     protected void Button1_Click(object sender, EventArgs e)

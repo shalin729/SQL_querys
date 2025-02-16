@@ -6,12 +6,10 @@ using System.Web;
 /// <summary>
 /// Summary description for bal
 /// </summary>
-public class bal
+public class registrationBAL
 {
-    public bal()
-    {
-        //
-        // TODO: Add constructor logic here
-        //
-    }
+    public int regid { get; set; }
+    public string name { get; set; }
+    public string email { get; set; }
+    public string password { get; set; }
 }
